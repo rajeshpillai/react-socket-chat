@@ -15,6 +15,7 @@ var ChatApp = React.createClass({
   }
   ,submitMessage: function () {
     var message = document.getElementById("message").value;
+    this.state.socket.emit("new-message", message);
     console.log(message);
   }
   ,render: function () {
