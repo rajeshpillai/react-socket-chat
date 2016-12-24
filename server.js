@@ -15,6 +15,10 @@ io.on("connection", function (socket) {
   socket.on("new-message", function (msg) {
     console.log(msg);
     io.emit("receive-message", msg);
+  });
+
+  socket.on("test", function () {
+    console.log("mounted...");
   })
 });
 

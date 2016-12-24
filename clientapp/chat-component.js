@@ -6,11 +6,25 @@ var ChatApp = React.createClass({
     }
   },
   componentDidMount: function () {
-
-  },
-  render: function () {
-    return ( < div >
-      This will be the chat application < /div>
+    this.state.socket.on("new-message", function (msg) {
+      // setState will trigger render
+      this.setState({
+        messages: this.state.messages.push(msg)
+      })
+    });
+  }
+  ,submitMessage: function () {
+    var message = document.getElementById("message").value;
+    console.log(message);
+  }
+  ,render: function () {
+    return ( 
+      <div >
+        <ul >
+        </ul> 
+        <input id = "message" type = "text" / >
+        <button type="button" onClick = {()=> this.submitMessage()}>Send</button>
+      </div >
     )
   }
 });
