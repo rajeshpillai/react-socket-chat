@@ -24,12 +24,18 @@ var ChatApp = React.createClass({
     console.log(message);
   }
   ,render: function () {
+    var self = this;
+    var messages = self.state.messages.map(function (msg){
+      return <li>{msg}</li>
+    });
+    
     return ( 
       <div >
         <ul >
+          {messages}
         </ul> 
         <input id = "message" type = "text" / >
-        <button type="button" onClick = {()=> this.submitMessage()}>Send</button>
+        <button type="submit" onClick = {()=> this.submitMessage()}>Send</button>
       </div >
     )
   }
